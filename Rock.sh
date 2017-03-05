@@ -36,7 +36,7 @@ do
  echo "# 1-Wallpapers                   # 15-BackDoor (Windows)         # 27-Esconder texto em imagem # 31-Adicionar repositório do Cyborg OS   #"                              
  echo "# 2-Livros para leitura          # 16-Scanear rede interna       # 28-Autenticidade arquivos   # 32-Instalar programas no Ubuntu         #"
  echo "# 3-Livros de Bash               # 17-Brute Force em SSH         # 29-Análise hexadecimal      # 33-Personalizar o Ubuntu                #"
- echo "# 4-Livros de C e C++            # 18-Main The Middle            # 30-Firewall                 # 34-Personalizar BackBox e LinuxMint     #"
+ echo "# 4-Livros de C e C++            # 18-Main in The Middle         # 30-Firewall                 # 34-Personalizar BackBox e LinuxMint     #"
  echo "# 5-Livros de Python             # 19-Derrubar wifi              #                             # 35-Instalar programas no Debian         #"
  echo "# 6-Livros de Ruby               # 20-Scanear rede externa       #                             # 36-Arrumar problemas do Kali Linux XFCE #"
  echo "# 7-Livros de Assembly           # 21-Sql Injection              #                             #                                         #"
