@@ -242,7 +242,7 @@ do
      nmap -v $inter/24
      route -n
      read -p "Deseja fazer scan em algum host especifico da rede ? " host
-     nmap -sS -sC -v -sV $host ;;
+     nmap -sV -T4 -A $host ;;
 
 
  17) apt-get install hydra
